@@ -10,4 +10,7 @@ typedef struct {
   int color;
 } FigureInfo_t;
 
+void initFigure(FigureInfo_t* fi);
+
+
 #endif
