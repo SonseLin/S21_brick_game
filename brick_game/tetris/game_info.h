@@ -8,10 +8,13 @@
 #define true 1
 #define false 0
 
+#define HEIGHT 20
+#define WIDTH 10
+
 
 typedef enum {
-  Start = 1,
-  Pause = 0,
+  Start = 0,
+  Pause = 1,
   Terminate = -1,
   Left = 2,
   Right = 3,
@@ -37,7 +40,9 @@ typedef struct {
   int time;
 } GameInfoExtended_t;
 
-GameInfo_t* initGameInfo();
+int **alloc_2d(int row, int column); 
+
+void initGameInfo(GameInfo_t* gi);
 GameInfoExtended_t* initGame(GameInfo_t* gi, bool hold, FigureInfo_t* fi, int time);
 void terminateGame(GameInfoExtended_t* gi);
 

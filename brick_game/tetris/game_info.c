@@ -1,10 +1,18 @@
 #include "game_info.h"
+#include <stdlib.h>
 
-
+int **alloc_2d(int row, int column) {
+    int **arr = malloc(row * column * sizeof(int) + row * sizeof(int*));
+    int *ptr = (int*) (arr + row);
+    for(int i = 0; i < row; i++) {
+        arr[i] = ptr + i * column;
+    }
+    return arr;
+}
 
 // TODO CHANGE HIGH SCORE AND FIELDS
-void init_game_info(GameInfo_t* game_info) {
-  game_info->field = NULL;
+void initGameInfo(GameInfo_t* game_info) {
+  game_info->field = alloc_2d(HEIGHT, WIDTH);
   game_info->next = NULL;
   game_info->score = 0;
   game_info->high_score = 0;
@@ -13,14 +21,6 @@ void init_game_info(GameInfo_t* game_info) {
   game_info->pause = 0;
 }
 
-void init_figure(FigureInfo_t* figure) {
-  figure->x = 0;
-  figure->y = 0;
-  figure->pattern = 0;
-  figure->state = 0;
-  figure->possible_rotations = 0;
-  figure->color = 0;
-}
 
 void terminateGame(GameInfoExtended_t *gi) {
   if(gi != NULL) {
