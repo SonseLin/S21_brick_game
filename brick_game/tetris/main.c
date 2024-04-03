@@ -15,6 +15,10 @@ int main() {
   FigureInfo_t* figure_info = initFigure();
   figure_info->pattern = 2;
   GameInfoExtended_t* gie = initGame(game_info, false, figure_info, 0);
+
+  FigureContainer* container = createContainer();
+  container->current = figure_info;
+
   while (gie->game_info->pause != -1) {
     clear();
     print_game(gie);

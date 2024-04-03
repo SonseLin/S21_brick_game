@@ -13,7 +13,28 @@ FigureInfo_t* initFigure() {
   return fi;
 }
 
-typedef struct {
-  FigureInfo_t* current;
-  FigureInfo_t* next;
-} FigureContainer;
+FigureContainer* createContainer() {
+  return malloc(sizeof(FigureContainer) * 2);
+}
+
+void appendToContainer(FigureContainer* fc, FigureInfo_t* fi) {
+  while (fc->next != NULL) {
+    fc = fc->next;
+  }
+  FigureContainer* new = createContainer();
+  new->current = fi;
+  fc->next = new;
+}
+
+void freeContainer(FigureContainer* fc) {
+  if (fc != NULL) {
+    while (fc->next != NULL) {
+      FigureContainer* tmp = fc->next;
+      free(fc->current);
+      free(fc);
+      fc->next = tmp;
+    }
+    free(fc->current);
+    free(fc);
+  }
+}

@@ -10,6 +10,15 @@ typedef struct {
   int color;
 } FigureInfo_t;
 
+typedef struct {
+  FigureInfo_t* current;
+  FigureContainer* next;
+} FigureContainer;
+
 FigureInfo_t* initFigure();
+
+FigureContainer* createContainer();
+void appendToContainer(FigureContainer* fc, FigureInfo_t* fi);
+void freeContainer(FigureContainer* fc);
 
 #endif
