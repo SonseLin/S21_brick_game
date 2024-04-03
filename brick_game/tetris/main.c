@@ -22,6 +22,7 @@ int main() {
   while (gie->game_info->pause != -1) {
     clear();
     print_game(gie);
+    print_current_figure(gie->figure);
     print_next_figure(gie->figure);
     print_border();
     int c = getch();

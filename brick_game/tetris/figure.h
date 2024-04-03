@@ -10,9 +10,9 @@ typedef struct {
   int color;
 } FigureInfo_t;
 
-typedef struct {
+typedef struct FigureContainer {
   FigureInfo_t* current;
-  FigureContainer* next;
+  struct FigureContainer* next;
 } FigureContainer;
 
 FigureInfo_t* initFigure();
@@ -20,5 +20,10 @@ FigureInfo_t* initFigure();
 FigureContainer* createContainer();
 void appendToContainer(FigureContainer* fc, FigureInfo_t* fi);
 void freeContainer(FigureContainer* fc);
+
+void rotateFigure(FigureInfo_t* fi);
+void moveFigureRight(FigureInfo_t* fi);
+void moveFigureLeft(FigureInfo_t* fi);
+void moveFigureDown(FigureInfo_t* fi);
 
 #endif

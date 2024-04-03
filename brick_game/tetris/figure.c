@@ -5,7 +5,7 @@
 FigureInfo_t* initFigure() {
   FigureInfo_t* fi = malloc(sizeof(FigureInfo_t*) * 2);
   fi->x = WIDTH / 2;
-  fi->y = 2;
+  fi->y = 3;
   fi->pattern = rand() % 7;
   fi->possible_rotations = fi->pattern > 2 ? 2 : 4;
   fi->state = 0;
@@ -38,3 +38,11 @@ void freeContainer(FigureContainer* fc) {
     free(fc);
   }
 }
+
+void rotateFigure(FigureInfo_t* fi) {
+  fi->state = (fi->state + 1) % fi->possible_rotations;
+}
+
+void moveFigureRight(FigureInfo_t* fi) { fi->x += 1; }
+void moveFigureLeft(FigureInfo_t* fi) { fi->x -= 1; }
+void moveFigureDown(FigureInfo_t* fi) { fi->y += 1; }
