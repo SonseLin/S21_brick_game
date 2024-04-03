@@ -2,15 +2,11 @@
 #define GAME_INFO_H
 
 #include "figure.h"
+#include "stdbool.h"
 #include "stdlib.h"
-
-#define bool int
-#define true 1
-#define false 0
 
 #define HEIGHT 20
 #define WIDTH 10
-
 
 typedef enum {
   Start = 0,
@@ -24,8 +20,8 @@ typedef enum {
 } UserAction_t;
 
 typedef struct {
-  int **field;
-  int **next;
+  int** field;
+  int** next;
   int score;
   int high_score;
   int level;
@@ -40,11 +36,12 @@ typedef struct {
   int time;
 } GameInfoExtended_t;
 
-int **alloc_2d(int row, int column); 
+int** alloc_2d(int row, int column);
 
-void initGameInfo(GameInfo_t* gi);
-GameInfoExtended_t* initGame(GameInfo_t* gi, bool hold, FigureInfo_t* fi, int time);
-void terminateGame(GameInfoExtended_t* gi);
+GameInfo_t* initGameInfo();
+GameInfoExtended_t* initGame(GameInfo_t* gi, bool hold, FigureInfo_t* fi,
+                             int time);
+void freeGame(GameInfoExtended_t* gi);
 
 void pause(GameInfoExtended_t* gi);
 void unpause(GameInfoExtended_t* gi);
