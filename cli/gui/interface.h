@@ -15,6 +15,7 @@ UserAction_t get_user_input();
 
 void print_game(GameInfoExtended_t* gie);
 void print_border();
+void print_current_figure(FigureInfo_t* fi);
 void print_next_figure(FigureInfo_t* fi);
 
 #endif  // !DEBUG

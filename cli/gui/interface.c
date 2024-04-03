@@ -53,7 +53,6 @@ void print_game(GameInfoExtended_t* gie) {
       }
       attroff(COLOR_PAIR(6));
     }
-    printw("\n");
   }
 }
 
@@ -78,6 +77,19 @@ void print_border() {
       attron(COLOR_PAIR(2));
       mvaddch(i, j, ' ');
       attron(COLOR_PAIR(6));
+    }
+  }
+}
+
+// FINISH HIM
+void print_current_figure(FigureInfo_t* fi) {
+  for (int i = fi->y; fi->y + 4; i++) {
+    for (int j = fi->x; fi->x + 4; j++) {
+      attron(COLOR_PAIR(7));
+      for (int k = O_X_ALIGNMENT; k < O_X_ALIGNMENT + X_WIDTH; k++) {
+        mvaddch(i, j * O_X_ALIGNMENT + k, ' ');
+      }
+      attroff(COLOR_PAIR(6));
     }
   }
 }
