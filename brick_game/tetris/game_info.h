@@ -31,4 +31,8 @@ typedef struct {
   int time;
 } GameInfoExtended_t;
 
+GameInfo_t* initGameInfo();
+GameInfoExtended_t* initGame(GameInfo_t* gi, bool hold, FigureInfo_t* fi, int time);
+void terminateGame(GameInfoExtended_t* gi);
+
 #endif
